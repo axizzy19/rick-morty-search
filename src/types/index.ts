@@ -50,7 +50,7 @@ export const defaultFilters: CharacterFilters = {
   name: '',
   status: '',
   species: '',
-  episode: ''
+  episode: '',
 };
 
 export interface AppState {
@@ -64,5 +64,5 @@ export const defaultAppState: AppState = {
   filters: defaultFilters,
   characters: [],
   selectedCharacter: null,
-  isModalOpen: false
+  isModalOpen: false,
 };

@@ -1,18 +1,18 @@
-import type { Character } from "../../types";
+import type { Character } from '../../types';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   character: Character | null;
 }
-export const Modal: React.FC<ModalProps> = ({isOpen, onClose, character}) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, character }) => {
   if (!isOpen || !character) return null;
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
-  }
+  };
 
   return (
     <div
@@ -27,50 +27,41 @@ export const Modal: React.FC<ModalProps> = ({isOpen, onClose, character}) => {
           >
             ×
           </button>
-          
+
           <div className="flex flex-col md:flex-row">
             <img
               src={character.image}
               alt={character.name}
               className="w-full md:w-1/2 object-cover"
             />
-            
+
             <div className="p-6 md:w-1/2">
-              <h2 className="text-2xl font-bold mb-4">
-                {character.name}
-              </h2>
-              
+              <h2 className="text-2xl font-bold mb-4">{character.name}</h2>
+
               <div className="space-y-3">
                 <p>
                   <span className="font-semibold">Status:</span>{' '}
-                  <span className="">
-                    {character.status}
-                  </span>
+                  <span className="">{character.status}</span>
                 </p>
-                
+
                 <p>
                   <span className="font-semibold">Species:</span>{' '}
                   {character.species}
                 </p>
-                
+
                 <p>
                   <span className="font-semibold">Gender:</span>{' '}
                   {character.gender}
                 </p>
-                
+
                 <p>
                   <span className="font-semibold">Origin:</span>{' '}
                   {character.origin?.name}
                 </p>
-                
+
                 <p>
                   <span className="font-semibold">Location:</span>{' '}
                   {character.location?.name}
-                </p>
-                
-                <p>
-                  <span className="font-semibold">Episodes:</span>{' '}
-                  {character.episode?.length}
                 </p>
               </div>
             </div>
@@ -78,7 +69,7 @@ export const Modal: React.FC<ModalProps> = ({isOpen, onClose, character}) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Modal;

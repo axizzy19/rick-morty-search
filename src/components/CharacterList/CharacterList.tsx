@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import type { Character } from "../../types";
-import CharacterCard from "../CharacterCard/CharacterCard";
+import { useEffect, useState } from 'react';
+import type { Character } from '../../types';
+import CharacterCard from '../CharacterCard/CharacterCard';
 
 interface CharacterListProps {
   characters: Character[];
@@ -9,7 +9,9 @@ interface CharacterListProps {
 }
 
 export const CharacterList: React.FC<CharacterListProps> = ({
-  characters, loading, onCharacterClick
+  characters,
+  loading,
+  onCharacterClick,
 }) => {
   const [showCharacters, setShowCharacters] = useState<Character[]>([]);
   const [animationTrigger, setAnimationTrigger] = useState(false);
@@ -20,7 +22,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
         setShowCharacters(characters);
         setAnimationTrigger(true);
       }, 100);
-      
+
       return () => clearTimeout(timer);
     } else {
       setShowCharacters([]);
@@ -44,10 +46,9 @@ export const CharacterList: React.FC<CharacterListProps> = ({
     );
   }
 
-
   return (
     <div className="flex flex-col gap-6 md:w-96">
-      {characters.map((character, index) => (
+      {showCharacters.map((character, index) => (
         <CharacterCard
           key={character.id}
           character={character}
@@ -57,5 +58,5 @@ export const CharacterList: React.FC<CharacterListProps> = ({
         />
       ))}
     </div>
-  )
-}
+  );
+};

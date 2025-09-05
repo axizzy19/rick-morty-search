@@ -7,11 +7,11 @@ export const useAppState = () => {
       name: '',
       status: '',
       species: '',
-      episode: ''
+      episode: '',
     },
     characters: [],
     selectedCharacter: null,
-    isModalOpen: false
+    isModalOpen: false,
   });
 
   const updateAppState = (updater: (prev: AppState) => AppState) => {

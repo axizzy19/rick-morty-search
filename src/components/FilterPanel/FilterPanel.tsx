@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { defaultFilters, type CharacterFilters } from "../../types";
+import { useEffect, useState } from 'react';
+import { defaultFilters, type CharacterFilters } from '../../types';
 
 interface FilterProps {
   onFilter: (filters: CharacterFilters) => void;
@@ -7,10 +7,10 @@ interface FilterProps {
 }
 
 const STATUS_OPTIONS = [
-  { value: "", label: 'Все' },
+  { value: '', label: 'Все' },
   { value: 'alive', label: 'alive' },
   { value: 'dead', label: 'dead' },
-  { value: 'unknown', label: 'unknown' }
+  { value: 'unknown', label: 'unknown' },
 ];
 
 const SPECIES_OPTIONS = [
@@ -19,11 +19,14 @@ const SPECIES_OPTIONS = [
   { value: 'Alien', label: 'Alien' },
   { value: 'Robot', label: 'Robot' },
   { value: 'Animal', label: 'Animal' },
-  { value: 'Mythological Creature', label: 'Mythological Creature' }
+  { value: 'Mythological Creature', label: 'Mythological Creature' },
 ];
 
-export const FilterPanel: React.FC<FilterProps> = ({ onFilter, initialFilters }) => {
-const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
+export const FilterPanel: React.FC<FilterProps> = ({
+  onFilter,
+  initialFilters,
+}) => {
+  const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
 
   useEffect(() => {
     setFilters(initialFilters);
@@ -67,7 +70,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
               onChange={(e) => handleFilterChange('status', e.target.value)}
               className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             >
-              {STATUS_OPTIONS.map(option => (
+              {STATUS_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -84,7 +87,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
               onChange={(e) => handleFilterChange('species', e.target.value)}
               className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             >
-              {SPECIES_OPTIONS.map(option => (
+              {SPECIES_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -92,7 +95,6 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
             </select>
           </div>
         </div>
-        
 
         <div>
           <label className="block text-sm font-medium text-white mb-1">
@@ -116,7 +118,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
         Сбросить фильтры
       </button>
     </div>
-  )
+  );
 };
 
 export default FilterPanel;

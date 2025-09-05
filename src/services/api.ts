@@ -1,9 +1,16 @@
-import type { ApiResponse, Character, CharacterFilters, Episode } from "../types";
+import type {
+  ApiResponse,
+  Character,
+  CharacterFilters,
+  Episode,
+} from '../types';
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
 export const api = {
-  async getCharacters(filters: CharacterFilters): Promise<ApiResponse<Character>> {
+  async getCharacters(
+    filters: CharacterFilters
+  ): Promise<ApiResponse<Character>> {
     const params = new URLSearchParams();
 
     if (filters.name) params.append('name', filters.name);
@@ -26,5 +33,5 @@ export const api = {
     const response = await fetch(`${BASE_URL}/episode`);
     if (!response.ok) throw new Error('Эпизоды отсутствуют');
     return response.json();
-  }
-}
+  },
+};

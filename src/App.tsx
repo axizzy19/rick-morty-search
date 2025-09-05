@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { CharacterList } from './components/CharacterList/CharacterList'
-import FilterPanel from './components/FilterPanel/FilterPanel'
-import { defaultAppState, type Character, type CharacterFilters } from './types'
-import { api } from './services/api'
-import Modal from './components/Modal/Modal'
-
+import { useEffect, useState } from 'react';
+import './App.css';
+import { CharacterList } from './components/CharacterList/CharacterList';
+import FilterPanel from './components/FilterPanel/FilterPanel';
+import {
+  defaultAppState,
+  type Character,
+  type CharacterFilters,
+} from './types';
+import { api } from './services/api';
+import Modal from './components/Modal/Modal';
 
 const getFromLocalStorage = <T,>(key: string, defaultValue: T): T => {
   try {
@@ -21,19 +24,23 @@ const getFromLocalStorage = <T,>(key: string, defaultValue: T): T => {
 };
 
 function App() {
-  const [filters, setFilters] = useState<CharacterFilters>(() => 
+  const [filters, setFilters] = useState<CharacterFilters>(() =>
     getFromLocalStorage('characterFilters', defaultAppState.filters)
   );
 
-  const [characters, setCharacters] = useState<Character[]>(() => 
+  const [characters, setCharacters] = useState<Character[]>(() =>
     getFromLocalStorage('characters', defaultAppState.characters)
   );
 
-  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(() => 
-    getFromLocalStorage('selectedCharacter', defaultAppState.selectedCharacter)
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
+    () =>
+      getFromLocalStorage(
+        'selectedCharacter',
+        defaultAppState.selectedCharacter
+      )
   );
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(() => 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(() =>
     getFromLocalStorage('isModalOpen', defaultAppState.isModalOpen)
   );
 
@@ -57,7 +64,10 @@ function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('selectedCharacter', JSON.stringify(selectedCharacter));
+      localStorage.setItem(
+        'selectedCharacter',
+        JSON.stringify(selectedCharacter)
+      );
     } catch (error) {
       console.error('Error saving selectedCharacter to localStorage:', error);
     }
@@ -98,22 +108,20 @@ function App() {
   const handleCharacterClick = (character: Character) => {
     setIsModalOpen(true);
     setSelectedCharacter(character);
-  }
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedCharacter(null);
-  }
-
+  };
 
   return (
     <div className="w-screen bg-black flex flex-col m-0 p-0 px-5 py-8">
-      <div className='max-w-2xl mx-auto flex flex-col lg:px-10 md:px-10 sm:px-5 px-5 2xl:gap-10 gap-5 rounded-3xl border border-white px-20 pb-10'> 
-        <h1 className="text-white font-semibold pt-5 text-3xl">Вселенная Рик и Морти</h1>
-        <FilterPanel
-          onFilter={handleFilter}
-          initialFilters={filters}
-        />
+      <div className="max-w-2xl mx-auto flex flex-col lg:px-10 md:px-10 sm:px-5 px-5 2xl:gap-10 gap-5 rounded-3xl border border-white px-20 pb-10">
+        <h1 className="text-white font-semibold pt-5 text-3xl">
+          Вселенная Рик и Морти
+        </h1>
+        <FilterPanel onFilter={handleFilter} initialFilters={filters} />
         <CharacterList
           characters={characters}
           loading={loading}
@@ -126,7 +134,7 @@ function App() {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
