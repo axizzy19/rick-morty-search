@@ -5,7 +5,7 @@ import type {
   Episode,
 } from '../types';
 
-const BASE_URL = import.meta.env.BASE_URL;
+const BASE_URL = import.meta.env.BASE_URL || 'https://rickandmortyapi.com/api';
 
 export const api = {
   async getCharacters(
