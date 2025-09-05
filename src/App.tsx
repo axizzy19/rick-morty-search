@@ -117,7 +117,7 @@ function App() {
 
   return (
     <div className="w-screen bg-black flex flex-col m-0 p-0 px-5 py-8">
-      <div className="max-w-2xl mx-auto flex flex-col lg:px-10 md:px-10 sm:px-5 px-5 2xl:gap-10 gap-5 rounded-3xl border border-white px-20 pb-10">
+      <div className="max-w-2xl mx-auto flex flex-col lg:px-10 md:px-10 sm:px-5 px-5 2xl:gap-10 gap-5 rounded-3xl border border-white pb-10">
         <h1 className="text-white font-semibold pt-5 text-3xl">
           Вселенная Рик и Морти
         </h1>
