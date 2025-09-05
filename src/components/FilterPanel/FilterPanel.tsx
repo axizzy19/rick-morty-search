@@ -43,7 +43,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
 
   return (
     <div>
-      <div className="flex flex-col gap-8 mb-4">
+      <div className="flex flex-col gap-5 sm:gap-8 mb-4 md:w-96">
         <div>
           <label className="block text-sm font-medium text-white mb-1">
             Имя персонажа
@@ -52,12 +52,12 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
             type="text"
             value={filters.name || ''}
             onChange={(e) => handleFilterChange('name', e.target.value)}
-            className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             placeholder="rick"
           />
         </div>
 
-        <div className="flex flex-row gap-10 content-between">
+        <div className="flex sm:flex-row flex-col md:gap-10 gap-5 content-between">
           <div>
             <label className="block text-sm font-medium text-white mb-1">
               Жив?
@@ -65,7 +65,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
             <select
               value={filters.status || ''}
               onChange={(e) => handleFilterChange('status', e.target.value)}
-              className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent"
+              className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             >
               {STATUS_OPTIONS.map(option => (
                 <option key={option.value} value={option.value}>
@@ -82,7 +82,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
             <select
               value={filters.species || ''}
               onChange={(e) => handleFilterChange('species', e.target.value)}
-              className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent"
+              className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             >
               {SPECIES_OPTIONS.map(option => (
                 <option key={option.value} value={option.value}>
@@ -103,7 +103,7 @@ const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
             min="1"
             value={filters.episode}
             onChange={(e) => handleFilterChange('episode', e.target.value)}
-            className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent"
+            className="w-full p-2 border border-white rounded-md bg-black text-white focus:ring-2 focus:ring-white focus:border-transparent cursor-pointer hover:ring-2 hover:ring-white"
             placeholder="1"
           />
         </div>

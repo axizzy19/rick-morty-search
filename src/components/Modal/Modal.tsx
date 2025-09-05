@@ -7,9 +7,19 @@ interface ModalProps {
 }
 export const Modal: React.FC<ModalProps> = ({isOpen, onClose, character}) => {
   if (!isOpen || !character) return null;
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-90vh overflow-y-auto">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50"
+      onClick={handleOverlayClick}
+    >
+      <div className="bg-black border border-solid border-white rounded-lg max-w-2xl w-full max-h-90vh overflow-y-auto text-white">
         <div className="relative">
           <button
             onClick={onClose}
@@ -26,40 +36,40 @@ export const Modal: React.FC<ModalProps> = ({isOpen, onClose, character}) => {
             />
             
             <div className="p-6 md:w-1/2">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              <h2 className="text-2xl font-bold mb-4">
                 {character.name}
               </h2>
               
               <div className="space-y-3">
                 <p>
-                  <span className="font-semibold">Статус:</span>{' '}
+                  <span className="font-semibold">Status:</span>{' '}
                   <span className="">
                     {character.status}
                   </span>
                 </p>
                 
                 <p>
-                  <span className="font-semibold">Раса:</span>{' '}
+                  <span className="font-semibold">Species:</span>{' '}
                   {character.species}
                 </p>
                 
                 <p>
-                  <span className="font-semibold">Пол:</span>{' '}
+                  <span className="font-semibold">Gender:</span>{' '}
                   {character.gender}
                 </p>
                 
                 <p>
-                  <span className="font-semibold">Происхождение:</span>{' '}
+                  <span className="font-semibold">Origin:</span>{' '}
                   {character.origin?.name}
                 </p>
                 
                 <p>
-                  <span className="font-semibold">Локация:</span>{' '}
+                  <span className="font-semibold">Location:</span>{' '}
                   {character.location?.name}
                 </p>
                 
                 <p>
-                  <span className="font-semibold">Появился в эпизодах:</span>{' '}
+                  <span className="font-semibold">Episodes:</span>{' '}
                   {character.episode?.length}
                 </p>
               </div>
